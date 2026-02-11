@@ -1,19 +1,22 @@
-diff -u -r pkg.orig/kolide-k2-launcher/etc/kolide-k2/launcher.flags pkg/kolide-k2-launcher/etc/kolide-k2/launcher.flags
---- pkg.orig/kolide-k2-launcher/etc/kolide-k2/launcher.flags	2020-01-14 17:22:26.000000000 +0100
-+++ pkg/kolide-k2-launcher/etc/kolide-k2/launcher.flags	2020-01-14 17:26:05.395168302 +0100
-@@ -5,6 +5,6 @@
- update_channel stable
- transport jsonrpc
+diff --git pkg.orig/kolide-ks-launcher/etc/kolide-k2/launcher.flags pkg/kolide-k2-launcher/etc/kolide-k2/launcher.flags
+index 5a62bd0..0ff88bc 100644
+--- pkg.orig/kolide-ks-launcher/etc/kolide-k2/launcher.flags
++++ pkg/kolide-k2-launcher/etc/kolide-k2/launcher.flags
+@@ -1,7 +1,7 @@
+ autoupdate
  hostname k2device.kolide.com
 -root_directory /var/kolide-k2/k2device.kolide.com
 -osqueryd_path /usr/local/kolide-k2/bin/osqueryd
 +root_directory /var/lib/kolide-k2/k2device.kolide.com
 +osqueryd_path /opt/kolide-k2/bin/osqueryd
  enroll_secret_path /etc/kolide-k2/secret
-diff -u -r pkg.orig/kolide-k2-launcher/usr/lib/systemd/system/launcher.kolide-k2.service pkg/kolide-k2-launcher/usr/lib/systemd/system/kolide-k2-launcher.service
---- pkg.orig/kolide-k2-launcher/usr/lib/systemd/system/kolide-k2-launcher.service	2020-01-14 17:22:26.000000000 +0100
-+++ pkg/kolide-k2-launcher/usr/lib/systemd/system/kolide-k2-launcher.service	2020-01-14 17:28:19.868402676 +0100
-@@ -1,13 +1,11 @@
+ update_channel stable
+ transport jsonrpc
+diff --git pkg.orig/kolide-ks-launcher/usr/lib/systemd/system/kolide-k2-launcher.service pkg/kolide-k2-launcher/usr/lib/systemd/system/kolide-k2-launcher.service
+index 6c1aebf..bc1f777 100644
+--- pkg.orig/kolide-ks-launcher/usr/lib/systemd/system/kolide-k2-launcher.service
++++ pkg/kolide-k2-launcher/usr/lib/systemd/system/kolide-k2-launcher.service
+@@ -1,13 +1,13 @@
  [Unit]
 -Description=The Kolide Launcher
 +Description=Kolide K2 Launcher
@@ -21,9 +24,9 @@ diff -u -r pkg.orig/kolide-k2-launcher/usr/lib/systemd/system/launcher.kolide-k2
  
  [Service]
 -ExecStart=/usr/local/kolide-k2/bin/launcher \
---config \
--/etc/kolide-k2/launcher.flags
-+ExecStart=/opt/kolide-k2/bin/launcher -config /etc/kolide-k2/launcher.flags
++ExecStart=/opt/kolide-k2/bin/launcher \
+ -config \
+ /etc/kolide-k2/launcher.flags
  Restart=on-failure
  RestartSec=3
  
